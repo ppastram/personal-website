@@ -1,0 +1,65 @@
+---
+/**
+ * Tufte-style sidenote: rendered in the margin on desktop, expandable inline on mobile.
+ * Usage in MDX: <Sidenote id={1}>Your note text here.</Sidenote>
+ */
+interface Props {
+  id: number;
+}
+
+const { id } = Astro.props;
+---
+
+<span class="sidenote-wrapper">
+  <label for={`sn-${id}`} class="sidenote-toggle font-mono text-accent text-xs cursor-pointer align-super">
+    {id}
+  </label>
+  <input type="checkbox" id={`sn-${id}`} class="sidenote-checkbox sr-only" />
+  <span class="sidenote font-mono text-xs text-muted">
+    <slot />
+  </span>
+</span>
+
+<style>
+  .sidenote-wrapper {
+    position: relative;
+  }
+
+  .sidenote {
+    display: none;
+    line-height: 1.5;
+  }
+
+  /* Mobile: toggle inline */
+  .sidenote-checkbox:checked ~ .sidenote {
+    display: block;
+    margin: 0.5em 0;
+    padding: 0.5em 0.75em;
+    background-color: var(--color-surface-raised);
+    border-radius: 0.25em;
+  }
+
+  /* Desktop: margin note */
+  @media (min-width: 1100px) {
+    .sidenote-toggle {
+      cursor: default;
+    }
+
+    .sidenote {
+      display: block;
+      position: absolute;
+      right: calc(-14rem - 2rem);
+      width: 14rem;
+      top: 0;
+      padding: 0;
+      background: none;
+      border-radius: 0;
+    }
+
+    .sidenote-checkbox:checked ~ .sidenote {
+      background: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+</style>

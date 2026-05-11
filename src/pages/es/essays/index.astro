@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EssayCard from '../../../components/EssayCard.astro';
+import TagFilter from '../../../components/TagFilter.astro';
+import { useTranslations } from '../../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+const locale = 'es' as const;
+const t = useTranslations(locale);
+
+const essays = (await getCollection('essays', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const urlTags = Astro.url.searchParams.get('tags')?.split(',').filter(Boolean) ?? [];
+---
+
+<BaseLayout title={t('essays.title')} lang={locale} description="Ensayos sobre producto, antropología, gobernanza e IA.">
+  <h1 class="mb-8">{t('essays.title')}</h1>
+
+  <TagFilter locale={locale} tags={urlTags} />
+
+  {essays.length > 0 ? (
+    <div class="grid gap-8">
+      {essays.map((essay) => (
+        <div data-essay-tags={essay.data.tags.join(',')}>
+          <EssayCard
+            title={essay.data.title}
+            description={essay.data.description}
+            pubDate={essay.data.pubDate}
+            tags={essay.data.tags}
+            lang={essay.data.lang}
+            slug={essay.id}
+            locale={locale}
+          />
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p class="text-muted">Aún no hay ensayos. Vuelve pronto.</p>
+  )}
+</BaseLayout>

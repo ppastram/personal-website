@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { getReadingTime } from '../../../utils/reading-time';
+import { useTranslations } from '../../../i18n/utils';
+
+const locale = 'es' as const;
+const t = useTranslations(locale);
+
+export async function getStaticPaths() {
+  const essays = await getCollection('essays', ({ data }) => !data.draft);
+  return essays.map((essay) => ({
+    params: { slug: essay.id },
+    props: { essay },
+  }));
+}
+
+const { essay } = Astro.props;
+const { Content } = await render(essay);
+const readingTime = getReadingTime(essay.body || '');
+
+const pubDate = essay.data.pubDate.toLocaleDateString('es-CO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const updatedDate = essay.data.updatedDate?.toLocaleDateString('es-CO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={essay.data.title} lang={locale} description={essay.data.description} ogImage={`/open-graph/essays/${essay.id}.png`}>
+  <article class="prose">
+    <header class="mb-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {essay.data.tags.map((tag) => (
+          <a
+            href={`/${locale}/essays/?tags=${tag}`}
+            class="text-xs font-mono text-accent bg-accent/10 rounded-full px-3 py-1 hover:bg-accent/20 transition-colors no-underline"
+          >
+            {tag}
+          </a>
+        ))}
+      </div>
+
+      <h1>{essay.data.title}</h1>
+
+      <div class="flex items-center gap-3 text-sm font-mono text-muted mt-3">
+        <time datetime={essay.data.pubDate.toISOString()}>{pubDate}</time>
+        <span aria-hidden="true">·</span>
+        <span>{readingTime} {t('essays.readingTime')}</span>
+        {essay.data.lang !== locale && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span class="border border-border rounded px-1">{essay.data.lang.toUpperCase()}</span>
+          </>
+        )}
+      </div>
+    </header>
+
+    <Content />
+
+    {updatedDate && (
+      <p class="text-sm font-mono text-muted mt-12 border-t border-border pt-4">
+        Actualizado {updatedDate}
+      </p>
+    )}
+  </article>
+</BaseLayout>

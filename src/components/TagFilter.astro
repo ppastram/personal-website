@@ -1,0 +1,92 @@
+---
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  tags: string[];
+}
+
+const { locale, tags } = Astro.props;
+const t = useTranslations(locale);
+
+const allTags = ['product', 'anthropology', 'governance', 'ai', 'field-note'] as const;
+---
+
+<div class="mb-8">
+  <p class="text-xs font-mono text-muted uppercase tracking-wide mb-3">{t('essays.filterByTag')}</p>
+  <div id="tag-filters" class="flex flex-wrap gap-2">
+    {allTags.map((tag) => (
+      <button
+        data-tag={tag}
+        class:list={[
+          'tag-chip text-xs font-mono rounded-full px-3 py-1 border transition-colors cursor-pointer',
+          tags.includes(tag)
+            ? 'bg-accent text-surface border-accent'
+            : 'text-muted border-border hover:border-accent hover:text-accent',
+        ]}
+      >
+        {tag}
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.tag-chip');
+  const articles = document.querySelectorAll<HTMLElement>('[data-essay-tags]');
+
+  function getActiveTags(): string[] {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('tags');
+    return raw ? raw.split(',').filter(Boolean) : [];
+  }
+
+  function updateUI(active: string[]) {
+    chips.forEach((chip) => {
+      const tag = chip.dataset.tag!;
+      const isActive = active.includes(tag);
+      chip.classList.toggle('bg-accent', isActive);
+      chip.classList.toggle('text-surface', isActive);
+      chip.classList.toggle('border-accent', isActive);
+      chip.classList.toggle('text-muted', !isActive);
+      chip.classList.toggle('border-border', !isActive);
+    });
+
+    articles.forEach((article) => {
+      const essayTags = article.dataset.essayTags!.split(',');
+      if (active.length === 0) {
+        article.style.display = '';
+      } else {
+        const match = active.some((t) => essayTags.includes(t));
+        article.style.display = match ? '' : 'none';
+      }
+    });
+  }
+
+  // Initialize from URL
+  updateUI(getActiveTags());
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const tag = chip.dataset.tag!;
+      let active = getActiveTags();
+
+      if (active.includes(tag)) {
+        active = active.filter((t) => t !== tag);
+      } else {
+        active.push(tag);
+      }
+
+      const url = new URL(window.location.href);
+      if (active.length > 0) {
+        url.searchParams.set('tags', active.join(','));
+      } else {
+        url.searchParams.delete('tags');
+      }
+      window.history.replaceState({}, '', url.toString());
+
+      updateUI(active);
+    });
+  });
+</script>
