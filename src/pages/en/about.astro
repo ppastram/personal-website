@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout title="About" lang={locale} description="Pablo Pastrana Vega — CPO at Dapper, working at the intersection of computer science, anthropology, and how technology meets institutions.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "mainEntity": { "@id": "https://pablopastranavega.com/#person" },
+        "url": "https://pablopastranavega.com/en/about/",
+        "name": "About — Pablo Pastrana Vega",
+        "inLanguage": "en",
+      },
+      {
+        "@type": "Person",
+        "@id": "https://pablopastranavega.com/#person",
+        "name": "Pablo Pastrana Vega",
+        "url": "https://pablopastranavega.com",
+        "jobTitle": "CPO",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Dapper",
+        },
+        "knowsAbout": ["Product Management", "Anthropology", "Governance", "AI Policy", "Computer Science"],
+        "nationality": {
+          "@type": "Country",
+          "name": "Colombia",
+        },
+        "sameAs": [
+          "https://linkedin.com/in/pablopastranavega",
+          "https://github.com/pablopastranavega",
+        ],
+      },
+    ],
+  })} />
+  <article class="prose">
+    <h1>About</h1>
+
+    <p>
+      I build products at the intersection of computer science, anthropology, and how technology meets institutions. Right now I'm CPO at <a href="/en/building/">Dapper</a>, where we work on compliance infrastructure for regulated industries.
+    </p>
+
+    <p>
+      Before that, I studied computer science and anthropology — not as a double major for the résumé, but because neither field alone explained what I kept seeing: that the hardest problems in technology aren't technical. They're institutional. They live in the gap between what a system can do and what an organization is willing to change.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>The unusual combination</h2>
+
+    <p>
+      Anthropology trained me to sit with complexity, to observe before intervening, to take seriously the structures people build around themselves — even when those structures look irrational from the outside. Computer science trained me to ship, to decompose problems, to think in systems and constraints.
+    </p>
+
+    <p>
+      The overlap is where I do my best work: understanding why institutions behave the way they do, then building software that meets them where they are instead of where a pitch deck says they should be.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>What I'm thinking about</h2>
+
+    <p>
+      Most of my current thinking circles around a few recurring questions:
+    </p>
+
+    <ul>
+      <li>How do cross-sector incentive structures shape what technology gets adopted — and what gets ignored?</li>
+      <li>What does responsible AI governance look like when the institutions doing the governing are themselves being reshaped by AI?</li>
+      <li>Why do most govtech and regtech products fail — and what would it take to build ones that don't?</li>
+    </ul>
+
+    <p>
+      I write about these questions in my <a href="/en/essays/">essays</a>. Some are polished; others are closer to field notes.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>Background</h2>
+
+    <p>
+      I'm originally from Colombia. I've lived and worked across contexts that don't usually talk to each other — academia, startups, government-adjacent industries, and the informal economies that exist alongside all three.
+    </p>
+
+    <p>
+      That background shapes how I think about product: not as an abstract craft, but as something that has to work inside real institutions with real constraints, real politics, and real people who didn't ask for a new tool.
+    </p>
+
+    <p class="text-sm text-muted mt-12">
+      This page is not a CV. For professional details, see <a href="https://linkedin.com/in/pablopastranavega" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+    </p>
+  </article>
+</BaseLayout>

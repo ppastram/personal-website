@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'es' as const;
+---
+
+<BaseLayout title="Sobre mí" lang={locale} description="Pablo Pastrana Vega — CPO en Dapper, trabajando en la intersección de ciencias de la computación, antropología y cómo la tecnología se encuentra con las instituciones.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "mainEntity": { "@id": "https://pablopastranavega.com/#person" },
+        "url": "https://pablopastranavega.com/es/about/",
+        "name": "Sobre mí — Pablo Pastrana Vega",
+        "inLanguage": "es",
+      },
+      {
+        "@type": "Person",
+        "@id": "https://pablopastranavega.com/#person",
+        "name": "Pablo Pastrana Vega",
+        "url": "https://pablopastranavega.com",
+        "jobTitle": "CPO",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Dapper",
+        },
+        "knowsAbout": ["Product Management", "Anthropology", "Governance", "AI Policy", "Computer Science"],
+        "nationality": {
+          "@type": "Country",
+          "name": "Colombia",
+        },
+        "sameAs": [
+          "https://linkedin.com/in/pablopastranavega",
+          "https://github.com/pablopastranavega",
+        ],
+      },
+    ],
+  })} />
+  <article class="prose">
+    <h1>Sobre mí</h1>
+
+    <p>
+      Construyo productos en la intersección de ciencias de la computación, antropología y cómo la tecnología se encuentra con las instituciones. Actualmente soy CPO en <a href="/es/building/">Dapper</a>, donde trabajamos en infraestructura de cumplimiento para industrias reguladas.
+    </p>
+
+    <p>
+      Antes de eso, estudié ciencias de la computación y antropología — no como doble titulación para el currículum, sino porque ninguna de las dos disciplinas por sí sola explicaba lo que seguía observando: que los problemas más difíciles en tecnología no son técnicos. Son institucionales. Viven en la brecha entre lo que un sistema puede hacer y lo que una organización está dispuesta a cambiar.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>La combinación inusual</h2>
+
+    <p>
+      La antropología me enseñó a convivir con la complejidad, a observar antes de intervenir, a tomar en serio las estructuras que las personas construyen a su alrededor — incluso cuando esas estructuras parecen irracionales desde afuera. Las ciencias de la computación me enseñaron a enviar, a descomponer problemas, a pensar en sistemas y restricciones.
+    </p>
+
+    <p>
+      El cruce es donde hago mi mejor trabajo: entender por qué las instituciones se comportan como lo hacen, y luego construir software que las encuentre donde están — no donde un pitch deck dice que deberían estar.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>En qué estoy pensando</h2>
+
+    <p>
+      La mayoría de mi pensamiento actual gira alrededor de unas preguntas recurrentes:
+    </p>
+
+    <ul>
+      <li>¿Cómo las estructuras de incentivos entre sectores determinan qué tecnología se adopta — y qué se ignora?</li>
+      <li>¿Cómo se ve la gobernanza responsable de IA cuando las instituciones que gobiernan están siendo transformadas por la misma IA?</li>
+      <li>¿Por qué fracasan la mayoría de los productos de govtech y regtech — y qué se necesitaría para construir unos que no?</li>
+    </ul>
+
+    <p>
+      Escribo sobre estas preguntas en mis <a href="/es/essays/">ensayos</a>. Algunos son pulidos; otros son más cercanos a notas de campo.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>Contexto</h2>
+
+    <p>
+      Soy de Colombia. He vivido y trabajado en contextos que normalmente no se hablan entre sí — academia, startups, industrias cercanas al gobierno, y las economías informales que existen al lado de las tres.
+    </p>
+
+    <p>
+      Ese contexto moldea cómo pienso sobre producto: no como un oficio abstracto, sino como algo que tiene que funcionar dentro de instituciones reales con restricciones reales, política real, y personas reales que no pidieron una herramienta nueva.
+    </p>
+
+    <p class="text-sm text-muted mt-12">
+      Esta página no es un CV. Para detalles profesionales, ver <a href="https://linkedin.com/in/pablopastranavega" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+    </p>
+  </article>
+</BaseLayout>
