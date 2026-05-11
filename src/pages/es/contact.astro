@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'es' as const;
+---
+
+<BaseLayout title="Contacto" lang={locale} description="Contacta a Pablo Pastrana Vega.">
+  <h1 class="mb-8">Contacto</h1>
+
+  <ul class="space-y-4 text-lg">
+    <li>
+      <span class="text-sm font-mono text-muted block mb-1">Email</span>
+      <a href="mailto:pablo@pablopastranavega.com" class="text-accent hover:text-accent-hover transition-colors">
+        pablo@pablopastranavega.com
+      </a>
+    </li>
+    <li>
+      <span class="text-sm font-mono text-muted block mb-1">LinkedIn</span>
+      <a href="https://linkedin.com/in/pablopastranavega" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">
+        linkedin.com/in/pablopastranavega
+      </a>
+    </li>
+    <li>
+      <span class="text-sm font-mono text-muted block mb-1">GitHub</span>
+      <a href="https://github.com/pablopastranavega" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">
+        github.com/pablopastranavega
+      </a>
+    </li>
+  </ul>
+</BaseLayout>
