@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+import { getCollection, render } from 'astro:content';
+
+const locale = 'en' as const;
+const t = useTranslations(locale);
+
+const allUpdates = (await getCollection('now'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const latest = allUpdates[0];
+const archive = allUpdates.slice(1);
+
+let LatestContent: any = null;
+if (latest) {
+  const rendered = await render(latest);
+  LatestContent = rendered.Content;
+}
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+---
+
+<BaseLayout title={t('now.title')} lang={locale} description="What Pablo is doing right now.">
+  <h1 class="mb-2">{t('now.title')}</h1>
+  <p class="text-sm text-muted mb-8">
+    This is a <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">now page</a>. Updated periodically.
+  </p>
+
+  {latest && (
+    <section class="mb-12">
+      <div class="flex items-center gap-3 mb-6">
+        <time datetime={latest.data.date.toISOString()} class="text-sm font-mono text-muted">
+          {formatDate(latest.data.date)}
+        </time>
+        {latest.data.location && (
+          <>
+            <span class="text-muted" aria-hidden="true">·</span>
+            <span class="text-sm font-mono text-muted">{latest.data.location}</span>
+          </>
+        )}
+      </div>
+      <div class="prose">
+        <LatestContent />
+      </div>
+    </section>
+  )}
+
+  {archive.length > 0 && (
+    <section>
+      <div class="divider mb-8" aria-hidden="true"></div>
+      <h2 class="text-sm font-mono text-muted uppercase tracking-wide mb-4">{t('now.archive')}</h2>
+      <ul class="space-y-2">
+        {archive.map((update) => (
+          <li class="text-sm font-mono text-muted">
+            <time datetime={update.data.date.toISOString()}>
+              {formatDate(update.data.date)}
+            </time>
+            {update.data.location && (
+              <span> — {update.data.location}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</BaseLayout>
