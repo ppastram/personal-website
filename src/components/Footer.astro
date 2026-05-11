@@ -1,0 +1,28 @@
+---
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<footer class="w-full max-w-3xl mx-auto px-6 py-8 border-t border-border">
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-sm text-muted font-mono">
+    <span>{t('footer.madeWith')}</span>
+    <span id="last-updated"></span>
+  </div>
+</footer>
+
+<script define:vars={{ label: t('footer.lastUpdated') }}>
+  // Last-updated timestamp is injected at build time via git;
+  // for now we show the build date as a fallback
+  const el = document.getElementById('last-updated');
+  if (el) {
+    const date = document.querySelector('meta[name="build-date"]')?.getAttribute('content')
+      || new Date().toISOString().split('T')[0];
+    el.textContent = `${label} ${date}`;
+  }
+</script>

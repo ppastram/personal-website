@@ -1,0 +1,94 @@
+---
+import { useTranslations, getLocalizedPath, type Locale } from '../i18n/utils';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const switchLocale: Locale = locale === 'en' ? 'es' : 'en';
+
+const navItems = [
+  { href: `/${locale}/`, label: t('nav.home') },
+  { href: `/${locale}/about/`, label: t('nav.about') },
+  { href: `/${locale}/essays/`, label: t('nav.essays') },
+  { href: `/${locale}/now/`, label: t('nav.now') },
+  { href: `/${locale}/building/`, label: t('nav.building') },
+  { href: `/${locale}/reading/`, label: t('nav.reading') },
+  { href: `/${locale}/contact/`, label: t('nav.contact') },
+];
+
+// Build the language-switched path
+const currentPath = Astro.url.pathname;
+const switchedPath = getLocalizedPath(currentPath, switchLocale);
+---
+
+<header class="w-full max-w-3xl mx-auto px-6 pt-8 pb-4">
+  <nav class="flex flex-wrap items-center justify-between gap-4" aria-label="Main navigation">
+    <a href={`/${locale}/`} class="font-heading text-lg font-semibold tracking-tight text-heading hover:text-accent transition-colors">
+      Pablo Pastrana Vega
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 text-muted hover:text-body transition-colors"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Navigation links -->
+    <div id="nav-links" class="hidden md:flex items-center gap-1 w-full md:w-auto">
+      <ul class="flex flex-col md:flex-row gap-1 w-full md:w-auto">
+        {navItems.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'block px-2 py-1 text-sm rounded transition-colors',
+                Astro.url.pathname === href || (href !== `/${locale}/` && Astro.url.pathname.startsWith(href))
+                  ? 'text-accent font-medium'
+                  : 'text-muted hover:text-body',
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex items-center gap-2 mt-2 md:mt-0 md:ml-3 border-t md:border-t-0 md:border-l border-border pt-2 md:pt-0 md:pl-3">
+        <a
+          href={switchedPath}
+          class="text-sm font-mono text-muted hover:text-body transition-colors px-1"
+          aria-label={`Switch to ${switchLocale === 'en' ? 'English' : 'Español'}`}
+        >
+          {t('lang.switch')}
+        </a>
+        <ThemeToggle />
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  const openIcon = toggle?.querySelector('.menu-open');
+  const closeIcon = toggle?.querySelector('.menu-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = navLinks?.classList.contains('hidden');
+    navLinks?.classList.toggle('hidden');
+    openIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
