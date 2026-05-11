@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'es' as const;
+---
+
+<BaseLayout title="Construyendo" lang={locale} description="Qué está construyendo Pablo Pastrana Vega y qué ha construido.">
+  <article class="prose">
+    <h1>Construyendo</h1>
+
+    <h2>Ahora</h2>
+
+    <p>
+      <strong>Dapper</strong> — CPO. Infraestructura de cumplimiento para industrias reguladas. Construimos herramientas que ayudan a las organizaciones a cumplir requisitos regulatorios sin reemplazar los flujos de trabajo de los que ya dependen. 2023–presente.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>Antes</h2>
+
+    <p>
+      <strong>Empresa de calzado</strong> — Cofundé una marca de calzado directo al consumidor. Manejé operaciones, cadena de suministro y las partes de construir un producto físico de las que nadie te advierte. La experiencia moldeó cómo pienso sobre las restricciones — el tipo que no se puede abstraer con software.
+    </p>
+
+    <p>
+      <strong>Investigación universitaria</strong> — Trabajé en la intersección de antropología y ciencias de la computación, estudiando cómo las instituciones adoptan (y resisten) la tecnología. Ahí comenzó el trabajo de tesis sobre estructuras de incentivos entre sectores.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>Proyectos paralelos</h2>
+
+    <p>
+      <strong>Proyecto de seguridad en internet en Buenaventura</strong> — Organicé el <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> en Buenaventura, Colombia. Un caso de estudio sobre qué pasa cuando llevas conversaciones de tecnología a comunidades que normalmente son excluidas de ellas. <a href="/es/buenaventura/">Leer el caso de estudio completo</a>.
+    </p>
+
+    <p>
+      <strong>Este sitio</strong> — Construido con Astro, Tailwind y MDX. Bilingüe. Sin plantillas, sin CMS. <a href="https://github.com/pablopastranavega/personal-website" target="_blank" rel="noopener noreferrer">Código fuente en GitHub</a>.
+    </p>
+  </article>
+</BaseLayout>
