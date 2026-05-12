@@ -5,11 +5,11 @@ import { readingList, categories, categoryLabels } from '../../data/reading';
 const locale = 'es' as const;
 ---
 
-<BaseLayout title="Lecturas" lang={locale} description="Libros, ensayos y pensadores que han moldeado cómo Pablo piensa sobre producto, instituciones y tecnología.">
+<BaseLayout title="Biblioteca" lang={locale} description="Libros, ensayos y recursos que han moldeado cómo Pablo piensa sobre producto, instituciones y tecnología.">
   <article class="prose">
-    <h1>Lecturas</h1>
+    <h1>Biblioteca</h1>
     <p class="text-muted">
-      Libros y ensayos que genuinamente cambiaron cómo pienso. No es una lista de "los 10 mejores" — solo los que se quedaron.
+      Libros, ensayos y recursos que genuinamente cambiaron cómo pienso. No es una lista de "los 10 mejores" — solo los que se quedaron.
     </p>
 
     {categories.map((cat) => {
@@ -29,9 +29,7 @@ const locale = 'es' as const;
                   )}
                 </strong>
                 {' '}<span class="text-muted">— {entry.author}{entry.year ? ` (${entry.year})` : ''}</span>
-                {entry.note && (
-                  <br /><span class="text-sm text-muted">{entry.note}</span>
-                )}
+                <br /><span class="text-sm text-muted">{entry.note.es}</span>
               </li>
             ))}
           </ul>
