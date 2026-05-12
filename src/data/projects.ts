@@ -7,6 +7,15 @@ export interface ProjectEntry {
 
 export const projectList: ProjectEntry[] = [
   {
+    title: 'Adonay Distribution',
+    url: 'https://www.adonaydistribution.com',
+    year: 2021,
+    description: {
+      en: 'A footwear brand I co-founded during university (2021–2024). We held the exclusive distribution of legendary brand Feiyue for Colombia. I handled operations, supply chain, and the parts of building a physical product that no one warns you about. That experience shaped how I think about constraints — the kind you can\'t abstract away with software.',
+      es: 'Una marca de calzado que cofundé durante la universidad (2021–2024). Tuvimos la distribución exclusiva de la legendaria marca Feiyue para Colombia. Manejé operaciones, cadena de suministro y las partes de construir un producto físico de las que nadie te advierte. Esa experiencia moldeó cómo pienso sobre las restricciones — el tipo que no se puede abstraer con software.',
+    },
+  },
+  {
     title: 'Haciendo visible la ENUT',
     url: 'https://ppastram.pythonanywhere.com/#',
     year: 2024,
