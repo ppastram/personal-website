@@ -1,56 +1,65 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import EssayCard from '../../components/EssayCard.astro';
-import { useTranslations } from '../../i18n/utils';
-import { getCollection } from 'astro:content';
 
 const locale = 'en' as const;
-const t = useTranslations(locale);
 
-const essays = (await getCollection('essays', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const questions = [
+  'How do cross-sector incentive structures shape what technology gets adopted — and what gets ignored?',
+  'What does responsible AI governance look like when the institutions doing the governing are themselves being reshaped by AI?',
+  'Why do most govtech and regtech products fail — and what would it take to build ones that don\'t?',
+  'What happens when you bring technology conversations to communities that are usually excluded from them?',
+  'When does compliance infrastructure become the thing that prevents organizations from actually changing?',
+  'What would it look like to build software that takes institutional resistance seriously?',
+];
 ---
 
 <BaseLayout title="Home" lang={locale}>
-  <section class="mb-16">
-    <h1 class="mb-4">Pablo Pastrana Vega</h1>
-    <p class="text-lg text-body leading-relaxed max-w-2xl">
-      {t('home.hero')}
-    </p>
-  </section>
+  <div class="typewriter-container">
+    <p class="typewriter-text font-heading text-heading text-2xl leading-snug" id="typewriter" aria-live="polite"></p>
+  </div>
 
-  {essays.length > 0 && (
-    <section class="mb-16">
-      <h2 class="text-sm font-mono text-muted uppercase tracking-wide mb-6">
-        {t('home.recentEssays')}
-      </h2>
-      <div class="grid gap-8">
-        {essays.map((essay) => (
-          <EssayCard
-            title={essay.data.title}
-            description={essay.data.description}
-            pubDate={essay.data.pubDate}
-            tags={essay.data.tags}
-            lang={essay.data.lang}
-            slug={essay.id}
-            locale={locale}
-          />
-        ))}
-      </div>
-      <a
-        href={`/${locale}/essays/`}
-        class="inline-block mt-6 text-sm text-accent hover:text-accent-hover transition-colors"
-      >
-        {t('home.viewAll')} →
-      </a>
-    </section>
-  )}
+  <script is:inline define:vars={{ questions }}>
+    (function () {
+      var el = document.getElementById('typewriter');
+      if (!el) return;
 
-  <section>
-    <div class="divider mb-8" aria-hidden="true"></div>
-    <p class="text-sm text-muted">
-      {t('home.currently')} <a href={`/${locale}/building/`} class="text-accent hover:text-accent-hover transition-colors">Dapper</a>.
-    </p>
-  </section>
+      var CHAR_DELAY = 35;
+      var PAUSE_AFTER = 1800;
+      var ERASE_DELAY = 20;
+      var PAUSE_BEFORE_NEXT = 400;
+      var idx = 0;
+
+      function type(text, cb) {
+        var i = 0;
+        (function next() {
+          if (i <= text.length) {
+            el.textContent = text.slice(0, i++);
+            setTimeout(next, CHAR_DELAY);
+          } else cb();
+        })();
+      }
+
+      function erase(cb) {
+        var text = el.textContent || '';
+        var i = text.length;
+        (function next() {
+          if (i >= 0) {
+            el.textContent = text.slice(0, i--);
+            setTimeout(next, ERASE_DELAY);
+          } else cb();
+        })();
+      }
+
+      (function run() {
+        type(questions[idx], function () {
+          idx = (idx + 1) % questions.length;
+          setTimeout(function () {
+            erase(function () {
+              setTimeout(run, PAUSE_BEFORE_NEXT);
+            });
+          }, PAUSE_AFTER);
+        });
+      })();
+    })();
+  </script>
 </BaseLayout>

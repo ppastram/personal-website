@@ -155,6 +155,63 @@ h3 {
   padding: 0;
 }
 
+/* ── Essay Layout (sidebar TOC) ────────────────────────── */
+
+.essay-layout {
+  display: block;
+}
+
+.essay-toc {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .essay-layout {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 3rem;
+  }
+
+  .essay-toc {
+    display: block;
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .essay-content {
+    max-width: 48rem;
+  }
+}
+
+/* ── Typewriter ────────────────────────────────────────── */
+
+.typewriter-container {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.typewriter-text::after {
+  content: '|';
+  color: var(--color-accent);
+  animation: blink 0.8s step-end infinite;
+  margin-left: 2px;
+  font-weight: 300;
+}
+
+.typewriter-text.hidden::after {
+  display: none;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* ── Section Divider ───────────────────────────────────── */
 
 .divider {
