@@ -9,9 +9,10 @@ interface Props {
   description?: string;
   lang?: Locale;
   ogImage?: string;
+  wide?: boolean;
 }
 
-const { title, description = 'Builder at the intersection of computer science, anthropology, and how technology meets institutions.', ogImage } = Astro.props;
+const { title, description = 'Builder at the intersection of computer science, anthropology, and how technology meets institutions.', ogImage, wide = false } = Astro.props;
 const ogImageUrl = new URL(ogImage || '/open-graph/site.png', Astro.site).href;
 const locale = Astro.props.lang || getLocaleFromUrl(Astro.url);
 ---
@@ -56,7 +57,7 @@ const locale = Astro.props.lang || getLocaleFromUrl(Astro.url);
   </head>
   <body class="bg-surface text-body font-body antialiased min-h-screen flex flex-col">
     <Header locale={locale} />
-    <main class="flex-1 w-full max-w-3xl mx-auto px-6 py-12">
+    <main class:list={['flex-1 w-full mx-auto px-6 py-12', wide ? 'max-w-5xl' : 'max-w-3xl']}>
       <slot />
     </main>
     <Footer locale={locale} />

@@ -16,8 +16,10 @@ export async function getStaticPaths() {
 }
 
 const { essay } = Astro.props;
-const { Content } = await render(essay);
+const { Content, headings } = await render(essay);
 const readingTime = getReadingTime(essay.body || '');
+
+const tocHeadings = headings.filter((h) => h.depth === 2);
 
 const pubDate = essay.data.pubDate.toLocaleDateString('es-CO', {
   year: 'numeric',
@@ -32,41 +34,104 @@ const updatedDate = essay.data.updatedDate?.toLocaleDateString('es-CO', {
 });
 ---
 
-<BaseLayout title={essay.data.title} lang={locale} description={essay.data.description} ogImage={`/open-graph/essays/${essay.id}.png`}>
-  <article class="prose">
-    <header class="mb-8">
-      <div class="flex flex-wrap gap-2 mb-4">
-        {essay.data.tags.map((tag) => (
-          <a
-            href={`/${locale}/essays/?tags=${tag}`}
-            class="text-xs font-mono text-accent bg-accent/10 rounded-full px-3 py-1 hover:bg-accent/20 transition-colors no-underline"
-          >
-            {tag}
-          </a>
-        ))}
-      </div>
-
-      <h1>{essay.data.title}</h1>
-
-      <div class="flex items-center gap-3 text-sm font-mono text-muted mt-3">
-        <time datetime={essay.data.pubDate.toISOString()}>{pubDate}</time>
-        <span aria-hidden="true">·</span>
-        <span>{readingTime} {t('essays.readingTime')}</span>
-        {essay.data.lang !== locale && (
-          <>
-            <span aria-hidden="true">·</span>
-            <span class="border border-border rounded px-1">{essay.data.lang.toUpperCase()}</span>
-          </>
-        )}
-      </div>
-    </header>
-
-    <Content />
-
-    {updatedDate && (
-      <p class="text-sm font-mono text-muted mt-12 border-t border-border pt-4">
-        Actualizado {updatedDate}
-      </p>
+<BaseLayout title={essay.data.title} lang={locale} description={essay.data.description} ogImage={`/open-graph/essays/${essay.id}.png`} wide={tocHeadings.length > 0}>
+  <div class:list={[tocHeadings.length > 0 && 'essay-layout']}>
+    {tocHeadings.length > 0 && (
+      <aside class="essay-toc">
+        <nav aria-label="Tabla de contenidos">
+          <h2 class="text-sm font-mono text-muted uppercase tracking-wide mb-4">Contenido</h2>
+          <ol class="space-y-2 list-none p-0 m-0">
+            {tocHeadings.map((heading, i) => (
+              <li>
+                <a
+                  href={`#${heading.slug}`}
+                  class="toc-link text-sm text-muted hover:text-body transition-colors block py-0.5 no-underline"
+                  data-slug={heading.slug}
+                >
+                  <span class="font-mono text-xs text-muted/60 mr-2">{i + 1}.</span>{heading.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </aside>
     )}
-  </article>
+
+    <article class="prose essay-content">
+      <header class="mb-8">
+        <div class="flex flex-wrap gap-2 mb-4">
+          {essay.data.tags.map((tag) => (
+            <a
+              href={`/${locale}/essays/?tags=${tag}`}
+              class="text-xs font-mono text-accent bg-accent/10 rounded-full px-3 py-1 hover:bg-accent/20 transition-colors no-underline"
+            >
+              {t(`tag.${tag}` as any)}
+            </a>
+          ))}
+        </div>
+
+        <h1>{essay.data.title}</h1>
+
+        <div class="flex items-center gap-3 text-sm font-mono text-muted mt-3">
+          <time datetime={essay.data.pubDate.toISOString()}>{pubDate}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{readingTime} {t('essays.readingTime')}</span>
+          {essay.data.lang !== locale && (
+            <>
+              <span aria-hidden="true">&middot;</span>
+              <span class="border border-border rounded px-1">{essay.data.lang.toUpperCase()}</span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <Content />
+
+      {updatedDate && (
+        <p class="text-sm font-mono text-muted mt-12 border-t border-border pt-4">
+          Actualizado {updatedDate}
+        </p>
+      )}
+    </article>
+  </div>
 </BaseLayout>
+
+<script>
+  function initToc() {
+    const links = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+    if (links.length === 0) return;
+
+    const slugs = Array.from(links).map((l) => l.dataset.slug!);
+    const headings = slugs
+      .map((s) => document.getElementById(s))
+      .filter(Boolean) as HTMLElement[];
+
+    if (headings.length === 0) return;
+
+    let active: string | null = null;
+
+    function update() {
+      let current = slugs[0];
+      for (let i = 0; i < headings.length; i++) {
+        if (headings[i].getBoundingClientRect().top <= 100) {
+          current = slugs[i];
+        }
+      }
+      if (current !== active) {
+        active = current;
+        links.forEach((link) => {
+          const isActive = link.dataset.slug === current;
+          link.classList.toggle('text-body', isActive);
+          link.classList.toggle('font-medium', isActive);
+          link.classList.toggle('text-muted', !isActive);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  initToc();
+  document.addEventListener('astro:after-swap', initToc);
+</script>
