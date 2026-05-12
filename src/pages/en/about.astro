@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
 
 const locale = 'en' as const;
+const t = useTranslations(locale);
 ---
 
-<BaseLayout title="About" lang={locale} description="Pablo Pastrana Vega — CPO at Dapper, working at the intersection of computer science, anthropology, and how technology meets institutions.">
+<BaseLayout title="About" lang={locale} description="Pablo Pastrana Vega — Product Lead at Dapper, working at the intersection of computer science, anthropology, and how technology meets institutions.">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -20,7 +22,7 @@ const locale = 'en' as const;
         "@id": "https://pablopastranavega.com/#person",
         "name": "Pablo Pastrana Vega",
         "url": "https://pablopastranavega.com",
-        "jobTitle": "CPO",
+        "jobTitle": "Product Lead",
         "worksFor": {
           "@type": "Organization",
           "name": "Dapper",
@@ -41,11 +43,11 @@ const locale = 'en' as const;
     <h1>About</h1>
 
     <p>
-      I build products at the intersection of computer science, anthropology, and how technology meets institutions. Right now I'm CPO at <a href="/en/building/">Dapper</a>, where we work on compliance infrastructure for regulated industries.
+      I build products at the intersection of computer science, anthropology, and how technology meets institutions. Right now I'm Product Lead at <a href="https://dfrnt.com" target="_blank" rel="noopener noreferrer">Dapper</a>, where we work on compliance infrastructure for regulated industries.
     </p>
 
     <p>
-      Before that, I studied computer science and anthropology — not as a double major for the résumé, but because neither field alone explained what I kept seeing: that the hardest problems in technology aren't technical. They're institutional. They live in the gap between what a system can do and what an organization is willing to change.
+      Before that, I studied computer science and anthropology — not as a double major for the r&eacute;sum&eacute;, but because neither field alone explained what I kept seeing: that the hardest problems in technology aren't technical. They're institutional. They live in the gap between what a system can do and what an organization is willing to change.
     </p>
 
     <div class="divider my-8" aria-hidden="true"></div>
@@ -80,6 +82,50 @@ const locale = 'en' as const;
 
     <div class="divider my-8" aria-hidden="true"></div>
 
+    <h2>{t('about.experience')}</h2>
+
+    <p>
+      I'm currently Product Lead at <strong>Dapper</strong> (Jun 2025–present), where I lead the product direction for compliance infrastructure serving regulated industries.
+    </p>
+
+    <p>
+      Before Dapper, I was a Data Product Manager at <strong>ONErpm</strong> (Jul–Dec 2024), where I worked on data products for the music distribution industry. Before that, I consulted for <strong>USAID's Juntos por la Transparencia</strong> program (Jan–May 2024), helping design technology interventions for governance and transparency initiatives in Colombia.
+    </p>
+
+    <p>
+      I worked as a Project Data Analyst at the <strong>Ministry of ICT Colombia</strong> (Jul–Nov 2023), contributing to national-scale technology policy projects. In the summer of 2022, I interned as a Software Engineer at <strong>Google</strong> (Jun–Sep 2022).
+    </p>
+
+    <p>
+      Throughout university, I co-founded <strong>Adonay Distribution</strong> (Aug 2021–Aug 2024), a direct-to-consumer footwear brand. I handled operations, supply chain, and the parts of building a physical product that no one warns you about. That experience shaped how I think about constraints — the kind you can't abstract away with software.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>{t('about.education')}</h2>
+
+    <p>
+      I studied Computer Science and Anthropology (double major) at <strong>Universidad de los Andes</strong> (2019–2024), with a minor in Science, Technology and Society. GPA 4.37/5.
+    </p>
+
+    <p>
+      In 2026, I completed <strong>BlueDot Impact</strong>'s AGI course (Apr–May 2026), focused on the governance and safety challenges of advanced AI systems.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>{t('about.sideProjects')}</h2>
+
+    <p>
+      <strong>Buenaventura internet safety project</strong> — I organized the <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> in Buenaventura, Colombia. A case study in what happens when you bring technology conversations to communities that are usually excluded from them. <a href="/en/buenaventura/">Read the full case study</a>.
+    </p>
+
+    <p>
+      <strong>This site</strong> — Built with Astro, Tailwind, and MDX. Bilingual. No templates, no CMS. <a href="https://github.com/pablopastranavega/personal-website" target="_blank" rel="noopener noreferrer">Source on GitHub</a>.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
     <h2>Background</h2>
 
     <p>
@@ -88,10 +134,6 @@ const locale = 'en' as const;
 
     <p>
       That background shapes how I think about product: not as an abstract craft, but as something that has to work inside real institutions with real constraints, real politics, and real people who didn't ask for a new tool.
-    </p>
-
-    <p class="text-sm text-muted mt-12">
-      This page is not a CV. For professional details, see <a href="https://linkedin.com/in/pablopastranavega" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
     </p>
   </article>
 </BaseLayout>

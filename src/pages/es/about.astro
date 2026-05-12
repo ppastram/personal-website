@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
 
 const locale = 'es' as const;
+const t = useTranslations(locale);
 ---
 
-<BaseLayout title="Sobre mí" lang={locale} description="Pablo Pastrana Vega — CPO en Dapper, trabajando en la intersección de ciencias de la computación, antropología y cómo la tecnología se encuentra con las instituciones.">
+<BaseLayout title="Sobre mí" lang={locale} description="Pablo Pastrana Vega — Product Lead en Dapper, trabajando en la intersección de ciencias de la computación, antropología y cómo la tecnología se encuentra con las instituciones.">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -20,7 +22,7 @@ const locale = 'es' as const;
         "@id": "https://pablopastranavega.com/#person",
         "name": "Pablo Pastrana Vega",
         "url": "https://pablopastranavega.com",
-        "jobTitle": "CPO",
+        "jobTitle": "Product Lead",
         "worksFor": {
           "@type": "Organization",
           "name": "Dapper",
@@ -41,7 +43,7 @@ const locale = 'es' as const;
     <h1>Sobre mí</h1>
 
     <p>
-      Construyo productos en la intersección de ciencias de la computación, antropología y cómo la tecnología se encuentra con las instituciones. Actualmente soy CPO en <a href="/es/building/">Dapper</a>, donde trabajamos en infraestructura de cumplimiento para industrias reguladas.
+      Construyo productos en la intersección de ciencias de la computación, antropología y cómo la tecnología se encuentra con las instituciones. Actualmente soy Product Lead en <a href="https://dfrnt.com" target="_blank" rel="noopener noreferrer">Dapper</a>, donde trabajamos en infraestructura de cumplimiento para industrias reguladas.
     </p>
 
     <p>
@@ -80,6 +82,50 @@ const locale = 'es' as const;
 
     <div class="divider my-8" aria-hidden="true"></div>
 
+    <h2>{t('about.experience')}</h2>
+
+    <p>
+      Actualmente soy Product Lead en <strong>Dapper</strong> (jun 2025–presente), donde lidero la dirección de producto para infraestructura de cumplimiento que sirve a industrias reguladas.
+    </p>
+
+    <p>
+      Antes de Dapper, fui Data Product Manager en <strong>ONErpm</strong> (jul–dic 2024), donde trabajé en productos de datos para la industria de distribución musical. Antes de eso, fui consultor para el programa <strong>Juntos por la Transparencia de USAID</strong> (ene–may 2024), ayudando a diseñar intervenciones tecnológicas para iniciativas de gobernanza y transparencia en Colombia.
+    </p>
+
+    <p>
+      Trabajé como Project Data Analyst en el <strong>Ministerio de las TIC de Colombia</strong> (jul–nov 2023), contribuyendo a proyectos de política tecnológica a escala nacional. En el verano de 2022, hice una pasantía como Software Engineer en <strong>Google</strong> (jun–sep 2022).
+    </p>
+
+    <p>
+      Durante la universidad, cofundé <strong>Adonay Distribution</strong> (ago 2021–ago 2024), una marca de calzado directo al consumidor. Manejé operaciones, cadena de suministro y las partes de construir un producto físico de las que nadie te advierte. Esa experiencia moldeó cómo pienso sobre las restricciones — el tipo que no se puede abstraer con software.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>{t('about.education')}</h2>
+
+    <p>
+      Estudié Ingeniería de Sistemas y Antropología (doble programa) en la <strong>Universidad de los Andes</strong> (2019–2024), con un minor en Ciencia, Tecnología y Sociedad. Promedio 4.37/5.
+    </p>
+
+    <p>
+      En 2026, completé el curso de AGI de <strong>BlueDot Impact</strong> (abr–may 2026), enfocado en los desafíos de gobernanza y seguridad de sistemas de IA avanzados.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
+    <h2>{t('about.sideProjects')}</h2>
+
+    <p>
+      <strong>Proyecto de seguridad en internet en Buenaventura</strong> — Organicé el <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> en Buenaventura, Colombia. Un caso de estudio sobre qué pasa cuando llevas conversaciones de tecnología a comunidades que normalmente son excluidas de ellas. <a href="/es/buenaventura/">Leer el caso de estudio completo</a>.
+    </p>
+
+    <p>
+      <strong>Este sitio</strong> — Construido con Astro, Tailwind y MDX. Bilingüe. Sin plantillas, sin CMS. <a href="https://github.com/pablopastranavega/personal-website" target="_blank" rel="noopener noreferrer">Código fuente en GitHub</a>.
+    </p>
+
+    <div class="divider my-8" aria-hidden="true"></div>
+
     <h2>Contexto</h2>
 
     <p>
@@ -88,10 +134,6 @@ const locale = 'es' as const;
 
     <p>
       Ese contexto moldea cómo pienso sobre producto: no como un oficio abstracto, sino como algo que tiene que funcionar dentro de instituciones reales con restricciones reales, política real, y personas reales que no pidieron una herramienta nueva.
-    </p>
-
-    <p class="text-sm text-muted mt-12">
-      Esta página no es un CV. Para detalles profesionales, ver <a href="https://linkedin.com/in/pablopastranavega" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
     </p>
   </article>
 </BaseLayout>
