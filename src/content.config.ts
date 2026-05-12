@@ -30,6 +30,7 @@ const nowUpdates = defineCollection({
   schema: z.object({
     date: z.coerce.date(),
     location: z.string().optional(),
+    lang: z.enum(['en', 'es']),
   }),
 });
 

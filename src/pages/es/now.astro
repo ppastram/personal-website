@@ -6,7 +6,7 @@ import { getCollection, render } from 'astro:content';
 const locale = 'es' as const;
 const t = useTranslations(locale);
 
-const allUpdates = (await getCollection('now'))
+const allUpdates = (await getCollection('now', ({ data }) => data.lang === 'es'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const latest = allUpdates[0];
