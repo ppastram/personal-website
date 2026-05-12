@@ -61,5 +61,9 @@ const locale = Astro.props.lang || getLocaleFromUrl(Astro.url);
       <slot />
     </main>
     <Footer locale={locale} />
+    <script>
+      import { inject } from '@vercel/analytics';
+      inject();
+    </script>
   </body>
 </html>
