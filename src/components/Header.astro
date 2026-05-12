@@ -52,7 +52,7 @@ const switchedPath = getLocalizedPath(currentPath, switchLocale);
             <a
               href={href}
               class:list={[
-                'block px-2 py-1 text-sm rounded transition-colors',
+                'block px-2 py-2 md:py-1 text-base md:text-sm rounded transition-colors',
                 Astro.url.pathname === href || (href !== `/${locale}/` && Astro.url.pathname.startsWith(href))
                   ? 'text-accent font-medium'
                   : 'text-muted hover:text-body',
