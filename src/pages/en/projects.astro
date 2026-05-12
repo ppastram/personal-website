@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projectList } from '../../data/projects';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout title="Projects" lang={locale} description="Things Pablo Pastrana Vega has built.">
+  <article class="prose">
+    <h1>Projects</h1>
+    <p class="text-muted">
+      Things I've built — some academic, some just for fun.
+    </p>
+
+    <ul>
+      {projectList.map((project) => (
+        <li>
+          <strong>
+            <a href={project.url} target="_blank" rel="noopener noreferrer">{project.title}</a>
+          </strong>
+          {' '}<span class="text-muted">({project.year})</span>
+          <br /><span class="text-sm text-muted">{project.description.en}</span>
+        </li>
+      ))}
+    </ul>
+  </article>
+</BaseLayout>
