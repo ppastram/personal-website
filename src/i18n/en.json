@@ -21,6 +21,8 @@
   "essays.title": "Essays",
   "essays.readingTime": "min read",
   "essays.filterByTag": "Filter by tag",
+  "tag.en": "English",
+  "tag.es": "Español",
   "tag.product": "product",
   "tag.ai": "AI",
   "tag.social-sciences": "social sciences",

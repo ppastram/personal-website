@@ -22,7 +22,7 @@ const urlTags = Astro.url.searchParams.get('tags')?.split(',').filter(Boolean) ?
   {essays.length > 0 ? (
     <div class="grid gap-8">
       {essays.map((essay) => (
-        <div data-essay-tags={essay.data.tags.join(',')}>
+        <div data-essay-tags={[...essay.data.tags, essay.data.lang].join(',')}>
           <EssayCard
             title={essay.data.title}
             description={essay.data.description}
