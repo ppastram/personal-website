@@ -10,7 +10,7 @@ interface Props {
 const { locale, tags } = Astro.props;
 const t = useTranslations(locale);
 
-const allTags = ['product', 'anthropology', 'governance', 'ai', 'field-note'] as const;
+const allTags = ['product', 'ai', 'social-sciences', 'culture'] as const;
 ---
 
 <div class="mb-8">
@@ -26,7 +26,7 @@ const allTags = ['product', 'anthropology', 'governance', 'ai', 'field-note'] as
             : 'text-muted border-border hover:border-accent hover:text-accent',
         ]}
       >
-        {tag}
+        {t(`tag.${tag}` as any)}
       </button>
     ))}
   </div>

@@ -9,7 +9,7 @@ const essays = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     lang: z.enum(['en', 'es']),
-    tags: z.array(z.enum(['product', 'anthropology', 'governance', 'ai', 'field-note'])),
+    tags: z.array(z.enum(['product', 'ai', 'social-sciences', 'culture'])),
     draft: z.boolean().default(false),
   }),
 });
