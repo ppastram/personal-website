@@ -12,7 +12,7 @@ interface Props {
   wide?: boolean;
 }
 
-const { title, description = 'Builder at the intersection of computer science, anthropology, and how technology meets institutions.', ogImage, wide = false } = Astro.props;
+const { title, description = 'Exploring technology\'s impact on society. Building technology with a deliberate positive impact on its users.', ogImage, wide = false } = Astro.props;
 const ogImageUrl = new URL(ogImage || '/open-graph/site.png', Astro.site).href;
 const locale = Astro.props.lang || getLocaleFromUrl(Astro.url);
 ---

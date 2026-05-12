@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: 'Pablo Pastrana Vega',
-    description: 'Essays on product, anthropology, governance, and AI — from the intersection of computer science and how technology meets institutions.',
+    description: 'Essays on product, AI, social sciences, and culture — exploring technology\'s impact on society.',
     site: context.site!,
     items: essays.map((essay) => ({
       title: essay.data.title,

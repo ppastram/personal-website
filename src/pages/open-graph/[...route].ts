@@ -7,7 +7,7 @@ const essays = await getCollection('essays', ({ data }) => !data.draft);
 const pages: Record<string, { title: string; description: string }> = {
   site: {
     title: 'Pablo Pastrana Vega',
-    description: 'Builder at the intersection of computer science, anthropology, and how technology meets institutions.',
+    description: 'Exploring technology\'s impact on society. Building technology with a deliberate positive impact on its users.',
   },
 };
 
