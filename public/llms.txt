@@ -1,0 +1,38 @@
+# Pablo Pastrana Vega
+
+> Personal website of Pablo Pastrana Vega — Product Lead at Dapper, exploring technology's impact on society and building technology with a deliberate positive impact on its users.
+
+## About
+
+Pablo Pastrana Vega is a product leader and writer based in Colombia. He studied Computer Science and Anthropology at Universidad de los Andes (2019–2024), with minors in Science, Technology & Society and in History & Economics. He completed BlueDot Impact's AGI course (2026) focused on governance and safety of advanced AI systems.
+
+He is currently Product Lead at Dapper, where he leads the product direction for data infrastructure that helps organizations in emerging markets navigate laws and regulations.
+
+Previously: Data Product Manager at ONErpm (2024), consultant for USAID's Juntos por la Transparencia program (2024), Project Data Analyst at the Ministry of ICT Colombia (2023), Software Engineering Intern at Google (2022), intern at Rappi (2021).
+
+## Sections
+
+- [About](https://pablopastranavega.com/en/about/): Background, experience, education, and what Pablo is thinking about.
+- [Essays](https://pablopastranavega.com/en/essays/): Writing on product, AI, governance, social sciences, and culture.
+- [Now](https://pablopastranavega.com/en/now/): What Pablo is currently working on and thinking about.
+
+## Topics
+
+Pablo writes and thinks about:
+- How cross-sector incentive structures shape technology adoption
+- Responsible AI governance when governing institutions are themselves reshaped by AI
+- Why most govtech and regtech products fail and what it takes to build ones that don't
+- Bringing technology conversations to communities usually excluded from them
+- Data infrastructure governments never built and its role in emerging market competitiveness
+- Building software that takes institutional resistance seriously
+
+## Links
+
+- Website: https://pablopastranavega.com
+- LinkedIn: https://linkedin.com/in/pablopastranavega
+- GitHub: https://github.com/pablopastranavega
+- RSS: https://pablopastranavega.com/rss.xml
+
+## Languages
+
+The site is available in English (/en/) and Spanish (/es/).

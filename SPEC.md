@@ -77,8 +77,6 @@ One signature color, applied sparingly to links, tags, and key accents:
 | `/now` | Sivers-style "what I'm doing right now" | Date-stamped; archive of past Nows |
 | `/essays` | Index of essays | Filterable by lens tag |
 | `/essays/[slug]` | Single essay | MDX, footnotes, reading time, tags |
-| `/linkedin` | Index of LinkedIn-synced posts | Phase 2 — scaffold the route in Phase 1 |
-| `/linkedin/[slug]` | Single LinkedIn post | Phase 2 |
 | `/building` | What Pablo is currently building / has built | Dapper, footwear co., side projects — factual, not "hire me" |
 | `/buenaventura` | Case study: Primer Conversatorio sobre el Uso Responsable del Internet | Standalone, bilingual, one of the most important pages on the site |
 | `/reading` | Books, essays, thinkers Pablo recommends | Categorized; grows over time; high long-term SEO value |
@@ -104,17 +102,6 @@ const essays = defineCollection({
   }),
 });
 
-const linkedin = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.date(),
-    lang: z.enum(['en', 'es']),
-    sourceUrl: z.string().url(),
-    syncedAt: z.date(),
-  }),
-});
-
 const nowUpdates = defineCollection({
   type: 'content',
   schema: z.object({
@@ -135,7 +122,7 @@ const reading = defineCollection({
   }),
 });
 
-export const collections = { essays, linkedin, 'now': nowUpdates, reading };
+export const collections = { essays, 'now': nowUpdates, reading };
 ```
 
 ### Lens Tags (Essays)
@@ -155,7 +142,7 @@ The `/essays` index allows filtering by tag via a chip-based UI. Multi-select. U
 ## Bilingual Handling
 
 - **Static UI text** (nav, footer, page chrome, About, Now, Building, Reading, Contact, Buenaventura): bilingual. Routes prefixed with `/en/...` and `/es/...`. Default language: English. Apex `/` redirects to `/en/`.
-- **Essays and LinkedIn posts**: stored in their original language only. Each entry declares `lang: 'en' | 'es'` in frontmatter. On the essay index, both languages appear together, with a small badge indicating language. Filtering by language is optional.
+- **Essays**: stored in their original language only. Each entry declares `lang: 'en' | 'es'` in frontmatter. On the essay index, both languages appear together, with a small badge indicating language. Filtering by language is optional.
 - **Language switcher** in the nav: switches the static UI shell. If the visitor is on an essay only in Spanish and clicks "EN", they go to `/en/essays/` (the index), not a 404.
 - Use Astro's built-in i18n routing in `astro.config.mjs`. UI strings live in `src/i18n/{en,es}.json` and are typed via a `useTranslations` helper.
 
@@ -191,7 +178,6 @@ Three real essays minimum. Without them, the site is a beautiful empty room and 
 
 ## Phase 2 — Defer
 
-- **LinkedIn auto-sync**: GitHub Action (daily cron) that fetches Pablo's recent LinkedIn posts (via Apify actor or similar), parses them into MDX with frontmatter, and commits to the `linkedin` collection. Reference implementation: `salomonmuriel.com` does this via `scripts/sync-linkedin.mjs` + `.github/workflows/sync-linkedin.yml`. Plan a half-day for this.
 - **Search**: Pagefind (works statically with Astro, ~30 min setup).
 - **Newsletter signup**: only when there's a regular publishing cadence.
 - **Comments**: skip indefinitely.

@@ -14,17 +14,6 @@ const essays = defineCollection({
   }),
 });
 
-const linkedin = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/linkedin' }),
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.coerce.date(),
-    lang: z.enum(['en', 'es']),
-    sourceUrl: z.string().url(),
-    syncedAt: z.coerce.date(),
-  }),
-});
-
 const nowUpdates = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/now' }),
   schema: z.object({
@@ -34,4 +23,4 @@ const nowUpdates = defineCollection({
   }),
 });
 
-export const collections = { essays, linkedin, now: nowUpdates };
+export const collections = { essays, now: nowUpdates };
