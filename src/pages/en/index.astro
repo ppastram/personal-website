@@ -14,6 +14,19 @@ const questions = [
 ---
 
 <BaseLayout title="Home" lang={locale}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Pablo Pastrana Vega",
+    "url": "https://pablopastranavega.com",
+    "description": "Exploring technology's impact on society. Building technology with a deliberate positive impact on its users.",
+    "inLanguage": ["en", "es"],
+    "author": {
+      "@type": "Person",
+      "@id": "https://pablopastranavega.com/#person",
+      "name": "Pablo Pastrana Vega",
+    },
+  })} />
   <div class="typewriter-container">
     <p class="typewriter-text font-heading text-heading text-2xl leading-snug" id="typewriter" aria-live="polite"></p>
   </div>

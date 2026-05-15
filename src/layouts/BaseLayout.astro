@@ -15,6 +15,11 @@ interface Props {
 const { title, description = 'Exploring technology\'s impact on society. Building technology with a deliberate positive impact on its users.', ogImage, wide = false } = Astro.props;
 const ogImageUrl = new URL(ogImage || '/open-graph/site.png', Astro.site).href;
 const locale = Astro.props.lang || getLocaleFromUrl(Astro.url);
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es)/, '');
+const enUrl = new URL(`/en${pathWithoutLocale}`, Astro.site).href;
+const esUrl = new URL(`/es${pathWithoutLocale}`, Astro.site).href;
 ---
 
 <!doctype html>
@@ -25,6 +30,11 @@ const locale = Astro.props.lang || getLocaleFromUrl(Astro.url);
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.jpg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <meta name="author" content="Pablo Pastrana Vega" />
     <title>{title} — Pablo Pastrana Vega</title>
 
     <!-- RSS autodiscovery -->

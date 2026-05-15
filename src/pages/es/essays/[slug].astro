@@ -35,6 +35,26 @@ const updatedDate = essay.data.updatedDate?.toLocaleDateString('es-CO', {
 ---
 
 <BaseLayout title={essay.data.title} lang={locale} description={essay.data.description} ogImage={`/open-graph/essays/${essay.id}.png`} wide={tocHeadings.length > 0}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": essay.data.title,
+    "description": essay.data.description,
+    "datePublished": essay.data.pubDate.toISOString(),
+    ...(essay.data.updatedDate && { "dateModified": essay.data.updatedDate.toISOString() }),
+    "inLanguage": essay.data.lang,
+    "url": `https://pablopastranavega.com/es/essays/${essay.id}/`,
+    "author": {
+      "@type": "Person",
+      "@id": "https://pablopastranavega.com/#person",
+      "name": "Pablo Pastrana Vega",
+    },
+    "publisher": {
+      "@type": "Person",
+      "@id": "https://pablopastranavega.com/#person",
+      "name": "Pablo Pastrana Vega",
+    },
+  })} />
   <div class:list={[tocHeadings.length > 0 && 'essay-layout']}>
     {tocHeadings.length > 0 && (
       <aside class="essay-toc">
