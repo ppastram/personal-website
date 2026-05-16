@@ -22,11 +22,14 @@ const locale = 'en' as const;
             {entries.map((entry) => (
               <li>
                 <strong>
-                  {entry.url ? (
-                    <a href={entry.url} target="_blank" rel="noopener noreferrer">{entry.title}</a>
-                  ) : (
-                    entry.title
-                  )}
+                  {(() => {
+                    const displayTitle = typeof entry.title === 'string' ? entry.title : entry.title.en;
+                    return entry.url ? (
+                      <a href={entry.url} target="_blank" rel="noopener noreferrer">{displayTitle}</a>
+                    ) : (
+                      displayTitle
+                    );
+                  })()}
                 </strong>
                 {' '}<span class="text-muted">— {entry.author}{entry.year ? ` (${entry.year})` : ''}</span>
                 <br /><span class="text-sm text-muted">{entry.note.en}</span>

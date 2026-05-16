@@ -1,5 +1,5 @@
 export interface ReadingEntry {
-  title: string;
+  title: string | { en: string; es: string };
   author: string;
   category: 'anthropology' | 'product' | 'organizations' | 'ai' | 'purpose';
   year?: number;
@@ -23,6 +23,7 @@ export const readingList: ReadingEntry[] = [
     author: 'Horace Miner',
     category: 'anthropology',
     year: 1956,
+    url: 'https://www.sfu.ca/~palys/Miner-1956-BodyRitualAmongTheNacirema.pdf',
     note: {
       en: 'A six-page essay that reframes the familiar as exotic. The best introduction to the anthropological gaze I know.',
       es: 'Un ensayo de seis páginas que reenmarca lo familiar como exótico. La mejor introducción a la mirada antropológica que conozco.',
@@ -122,7 +123,7 @@ export const readingList: ReadingEntry[] = [
     },
   },
   {
-    title: 'La fiesta de la insignificancia',
+    title: { en: 'The Festival of Insignificance', es: 'La fiesta de la insignificancia' },
     author: 'Milan Kundera',
     category: 'purpose',
     year: 2013,
