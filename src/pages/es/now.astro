@@ -47,22 +47,4 @@ const formatDate = (date: Date) =>
     </section>
   )}
 
-  {archive.length > 0 && (
-    <section>
-      <div class="divider mb-8" aria-hidden="true"></div>
-      <h2 class="text-sm font-mono text-muted uppercase tracking-wide mb-4">{t('now.archive')}</h2>
-      <ul class="space-y-2">
-        {archive.map((update) => (
-          <li class="text-sm font-mono text-muted">
-            <time datetime={update.data.date.toISOString()}>
-              {formatDate(update.data.date)}
-            </time>
-            {update.data.location && (
-              <span> — {update.data.location}</span>
-            )}
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
 </BaseLayout>
