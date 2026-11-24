@@ -97,8 +97,8 @@ export const readingList: ReadingEntry[] = [
     year: 2024,
     url: 'https://dario.ai/essay/machines-of-loving-grace',
     note: {
-      en: 'A concrete, optimistic vision of what AI could do for science, health, and governance — from someone building the systems.',
-      es: 'Una visión concreta y optimista de lo que la IA podría hacer por la ciencia, la salud y la gobernanza — de alguien que está construyendo los sistemas.',
+      en: 'A concrete, optimistic vision of what AI could do for science, health, and governance, from someone building the systems.',
+      es: 'Una visión concreta y optimista de lo que la IA podría hacer por la ciencia, la salud y la gobernanza, de alguien que está construyendo los sistemas.',
     },
   },
   {
@@ -118,8 +118,8 @@ export const readingList: ReadingEntry[] = [
     year: 2003,
     url: 'https://nickbostrom.com/papers/astronomical-waste/',
     note: {
-      en: 'A short paper that reframes urgency. Every moment of delay in reducing existential risk has a cost measured in potential lives — an argument that changes how you prioritize.',
-      es: 'Un artículo corto que reenmarca la urgencia. Cada momento de demora en reducir el riesgo existencial tiene un costo medido en vidas potenciales — un argumento que cambia cómo priorizas.',
+      en: 'A short paper that reframes urgency. Every moment of delay in reducing existential risk has a cost measured in potential lives, an argument that changes how you prioritize.',
+      es: 'Un artículo corto que reenmarca la urgencia. Cada momento de demora en reducir el riesgo existencial tiene un costo medido en vidas potenciales, un argumento que cambia cómo priorizas.',
     },
   },
   {
@@ -128,8 +128,8 @@ export const readingList: ReadingEntry[] = [
     category: 'purpose',
     year: 2013,
     note: {
-      en: 'Kundera\'s last novel. A quiet meditation on the lightness of meaning — and why that lightness might be the point.',
-      es: 'La última novela de Kundera. Una meditación silenciosa sobre la levedad del sentido — y por qué esa levedad podría ser el punto.',
+      en: 'Kundera\'s last novel. A quiet meditation on the lightness of meaning, and why that lightness might be the point.',
+      es: 'La última novela de Kundera. Una meditación silenciosa sobre la levedad del sentido, y por qué esa levedad podría ser el punto.',
     },
   },
   {

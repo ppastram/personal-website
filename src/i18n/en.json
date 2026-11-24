@@ -37,6 +37,6 @@
   "theme.dark": "Dark",
   "lang.switch": "ES",
   "notFound.title": "Page not found",
-  "notFound.message": "The page you're looking for doesn't exist — or it moved while you weren't looking.",
+  "notFound.message": "The page you're looking for doesn't exist, or it moved while you weren't looking.",
   "notFound.back": "Go home"
 }

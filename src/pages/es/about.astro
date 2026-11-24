@@ -6,7 +6,7 @@ const locale = 'es' as const;
 const t = useTranslations(locale);
 ---
 
-<BaseLayout title="Sobre mí" lang={locale} description="Pablo Pastrana Vega — Product Lead en Dapper, explorando el impacto de la tecnología en la sociedad y construyendo tecnología con un impacto positivo deliberado en sus usuarios.">
+<BaseLayout title="Sobre mí" lang={locale} description="Pablo Pastrana Vega — CPO en Dapper, explorando el impacto de la tecnología en la sociedad y construyendo tecnología con un impacto positivo deliberado en sus usuarios.">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -22,7 +22,7 @@ const t = useTranslations(locale);
         "@id": "https://pablopastranavega.com/#person",
         "name": "Pablo Pastrana Vega",
         "url": "https://pablopastranavega.com",
-        "jobTitle": "Product Lead",
+        "jobTitle": "CPO",
         "worksFor": {
           "@type": "Organization",
           "name": "Dapper",
@@ -43,7 +43,7 @@ const t = useTranslations(locale);
     <h1>Sobre mí</h1>
 
     <p>
-      Exploro el impacto de la tecnología en la sociedad, con el objetivo de conectar métodos computacionales con diseño centrado en las personas para abordar desafíos sociales. Construyo tecnología que tiene un impacto positivo deliberado en sus usuarios. Actualmente soy Product Lead en <a href="https://dapperglobal.com/es" target="_blank" rel="noopener noreferrer">Dapper</a>, donde estamos construyendo la infraestructura de datos para asuntos públicos en mercados emergentes — llenando un vacío que los gobiernos podrían haber llenado, para hacer estos mercados más competitivos a través de una navegación más fácil de leyes y regulaciones.
+      Exploro el impacto de la tecnología en la sociedad, conectando métodos computacionales y diseño centrado en las personas para abordar desafíos sociales. Construyo tecnología con un impacto positivo deliberado en sus usuarios. Ahora soy CPO en <a href="https://dapperglobal.com/es" target="_blank" rel="noopener noreferrer">Dapper</a>, donde estamos construyendo la infraestructura de datos para asuntos públicos en mercados emergentes. Los gobiernos podrían haber llenado ese vacío; cerrarlo hace estos mercados más competitivos al hacer las leyes y regulaciones más fáciles de navegar.
     </p>
 
     <p>
@@ -59,7 +59,7 @@ const t = useTranslations(locale);
     </p>
 
     <p>
-      La ingeniería me dio las bases para saber qué es posible y las manos para construirlo — o al menos el lenguaje para hablar con personas técnicas.
+      La ingeniería me dio las bases para saber qué es posible y las manos para construirlo, o al menos el lenguaje para hablar con personas técnicas.
     </p>
 
     <div class="divider my-8" aria-hidden="true"></div>
@@ -71,9 +71,9 @@ const t = useTranslations(locale);
     </p>
 
     <ul>
-      <li>¿Cómo las estructuras de incentivos entre sectores determinan qué tecnología se adopta — y qué se ignora?</li>
+      <li>¿Cómo las estructuras de incentivos entre sectores determinan qué tecnología se adopta, y qué se ignora?</li>
       <li>¿Cómo se ve la gobernanza responsable de IA cuando las instituciones que gobiernan están siendo transformadas por la misma IA?</li>
-      <li>¿Por qué fracasan la mayoría de los productos de govtech y regtech — y qué se necesitaría para construir unos que no?</li>
+      <li>¿Por qué fracasan la mayoría de los productos de govtech y regtech, y qué se necesitaría para construir unos que no?</li>
     </ul>
 
     <p>
@@ -85,19 +85,19 @@ const t = useTranslations(locale);
     <h2>{t('about.experience')}</h2>
 
     <p>
-      Actualmente soy Product Lead en <strong>Dapper</strong> (jun 2025–presente), donde lidero la dirección de producto para infraestructura de datos que ayuda a organizaciones en mercados emergentes a navegar leyes y regulaciones.
+      Actualmente soy CPO en <strong>Dapper</strong> (jun 2025–presente). Dapper opera en 14 países, trabaja con clientes como Coca-Cola, TikTok y Rappi, y ha crecido 10x en el último año. Lidero la dirección de producto, y he lanzado productos como nuestro servidor MCP, que hoy impulsa más de la mitad de nuestra North Star Metric, consultas exitosas por mes.
     </p>
 
     <p>
-      Antes de Dapper, fui Data Product Manager en <strong>ONErpm</strong> (2024), donde trabajé en productos de datos para la industria de distribución musical. Antes de eso, fui consultor para el programa <strong>Juntos por la Transparencia de USAID</strong> (2024), ayudando a diseñar intervenciones tecnológicas para iniciativas de gobernanza y transparencia en Colombia. Durante ese tiempo, organicé el <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> en Buenaventura — llevando conversaciones de tecnología a una comunidad que normalmente es excluida de ellas. <a href="/es/buenaventura/">Leer el caso de estudio completo</a>.
+      Antes de Dapper, fui Data Product Manager en <strong>ONErpm</strong> (2024), donde trabajé en productos de datos para la industria de distribución musical. Antes de eso, fui consultor para el programa <strong>Juntos por la Transparencia de USAID</strong> (2024), ayudando a diseñar intervenciones tecnológicas para iniciativas de gobernanza y transparencia en Colombia. Durante ese tiempo, organicé el <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> en Buenaventura, llevando conversaciones de tecnología a una comunidad que normalmente es excluida de ellas. <a href="/es/buenaventura/">Leer el caso de estudio completo</a>.
     </p>
 
     <p>
-      Trabajé como Project Data Analyst en el <strong>Ministerio de las TIC de Colombia</strong> (2023). Fue mi primera ventana real al sector público — a cómo la política tecnológica se moldea en parte desde instituciones como estas, y cuánto más podría hacerse.
+      Trabajé como Project Data Analyst en el <strong>Ministerio de las TIC de Colombia</strong> (2023). Fue mi primera ventana real al sector público: a cómo la política tecnológica se moldea en parte desde instituciones como estas, y cuánto más podría hacerse.
     </p>
 
     <p>
-      En 2022, hice una pasantía como Software Engineer en <strong>Google</strong> en Silicon Valley. Fue una experiencia transformadora — pude ver de cerca tanto lo mejor como lo más inquietante que el futuro podría traer. También hice una pasantía en <strong>Rappi</strong> (2021), el primer unicornio de Colombia, donde tuve un primer acercamiento a lo que significa construir a escala en América Latina.
+      En 2022, hice una pasantía como Software Engineer en <strong>Google</strong> en Silicon Valley. Ver ese lugar de cerca me mostró lo mejor y lo más inquietante que el futuro podría traer. También hice una pasantía en <strong>Rappi</strong> (2021), el primer unicornio de Colombia, donde tuve un primer acercamiento a lo que significa construir a escala en América Latina.
     </p>
 
     <div class="divider my-8" aria-hidden="true"></div>
@@ -121,11 +121,15 @@ const t = useTranslations(locale);
     <h2>Contexto</h2>
 
     <p>
-      Soy de Colombia. He pasado tiempo considerable en Bogotá, Buenaventura, Luang Prabang (Laos), París, Lisboa y San Francisco — y he trabajado en contextos que normalmente no se hablan entre sí: academia, startups, industrias cercanas al gobierno, y las economías informales que existen al lado de las tres.
+      Soy de Colombia. He pasado tiempo considerable en Bogotá, Buenaventura, Luang Prabang (Laos), París, Lisboa y San Francisco, y he trabajado en contextos que normalmente no se hablan entre sí: academia, startups, industrias cercanas al gobierno, y las economías informales que existen al lado de las tres.
     </p>
 
     <p>
-      Ese contexto moldea cómo pienso sobre producto: no como un oficio abstracto, sino como algo que tiene que funcionar dentro de instituciones reales con restricciones reales, política real, y personas reales que no pidieron una herramienta nueva.
+      Ese contexto moldea cómo pienso sobre producto. Un producto tiene que funcionar dentro de instituciones reales, con restricciones reales, política real, y personas reales que no pidieron una herramienta nueva.
+    </p>
+
+    <p>
+      Si algo de esto coincide con lo que estás trabajando, <a href="https://calendar.app.google/Q7Z4RKaWkfDFBm7v6" target="_blank" rel="noopener noreferrer">agenda una llamada</a>.
     </p>
   </article>
 </BaseLayout>

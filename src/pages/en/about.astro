@@ -6,7 +6,7 @@ const locale = 'en' as const;
 const t = useTranslations(locale);
 ---
 
-<BaseLayout title="About" lang={locale} description="Pablo Pastrana Vega — Product Lead at Dapper, exploring technology's impact on society and building technology with a deliberate positive impact on its users.">
+<BaseLayout title="About" lang={locale} description="Pablo Pastrana Vega — CPO at Dapper, exploring technology's impact on society and building technology with a deliberate positive impact on its users.">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -22,7 +22,7 @@ const t = useTranslations(locale);
         "@id": "https://pablopastranavega.com/#person",
         "name": "Pablo Pastrana Vega",
         "url": "https://pablopastranavega.com",
-        "jobTitle": "Product Lead",
+        "jobTitle": "CPO",
         "worksFor": {
           "@type": "Organization",
           "name": "Dapper",
@@ -43,7 +43,7 @@ const t = useTranslations(locale);
     <h1>About</h1>
 
     <p>
-      I'm exploring technology's impact on society, with the goal of bridging computational methods with human-centered design to address societal challenges. I build technology that has a deliberate positive impact on its users. Right now I'm Product Lead at <a href="https://dapperglobal.com/es" target="_blank" rel="noopener noreferrer">Dapper</a>, where we're building the data infrastructure for public affairs in emerging markets — filling a gap that governments could have filled, to make these markets more competitive through easier navigation of laws and regulations.
+      I'm exploring technology's impact on society, bridging computational methods and human-centered design to address societal challenges. I build technology with a deliberate positive impact on its users. Right now I'm CPO at <a href="https://dapperglobal.com/es" target="_blank" rel="noopener noreferrer">Dapper</a>, where we're building the data infrastructure for public affairs in emerging markets. Governments could have filled that gap, and closing it makes these markets more competitive by making laws and regulations easier to navigate.
     </p>
 
     <p>
@@ -59,7 +59,7 @@ const t = useTranslations(locale);
     </p>
 
     <p>
-      Engineering gave me the ground to know what's possible and the hands to build it — or at least the language to talk to fellow technical people.
+      Engineering gave me the ground to know what's possible and the hands to build it, or at least the language to talk to fellow technical people.
     </p>
 
     <div class="divider my-8" aria-hidden="true"></div>
@@ -71,9 +71,9 @@ const t = useTranslations(locale);
     </p>
 
     <ul>
-      <li>How do cross-sector incentive structures shape what technology gets adopted — and what gets ignored?</li>
+      <li>How do cross-sector incentive structures shape what technology gets adopted, and what gets ignored?</li>
       <li>What does responsible AI governance look like when the institutions doing the governing are themselves being reshaped by AI?</li>
-      <li>Why do most govtech and regtech products fail — and what would it take to build ones that don't?</li>
+      <li>Why do most govtech and regtech products fail, and what would it take to build ones that don't?</li>
     </ul>
 
     <p>
@@ -85,19 +85,19 @@ const t = useTranslations(locale);
     <h2>{t('about.experience')}</h2>
 
     <p>
-      I'm currently Product Lead at <strong>Dapper</strong> (Jun 2025–present), where I lead the product direction for data infrastructure that helps organizations in emerging markets navigate laws and regulations.
+      I'm currently CPO at <strong>Dapper</strong> (Jun 2025–present). Dapper operates in 14 countries, works with clients like Coca-Cola, TikTok and Rappi, and has grown 10x over the past year. I lead product direction, and I've launched products like our MCP server, which today drives more than half of our North Star Metric, successful queries per month.
     </p>
 
     <p>
-      Before Dapper, I was a Data Product Manager at <strong>ONErpm</strong> (2024), where I worked on data products for the music distribution industry. Before that, I consulted for <strong>USAID's Juntos por la Transparencia</strong> program (2024), helping design technology interventions for governance and transparency initiatives in Colombia. During that time, I organized the <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> in Buenaventura — bringing technology conversations to a community that is usually excluded from them. <a href="/en/buenaventura/">Read the full case study</a>.
+      Before Dapper, I was a Data Product Manager at <strong>ONErpm</strong> (2024), where I worked on data products for the music distribution industry. Before that, I consulted for <strong>USAID's Juntos por la Transparencia</strong> program (2024), helping design technology interventions for governance and transparency initiatives in Colombia. During that time, I organized the <em>Primer Conversatorio sobre el Uso Responsable del Internet</em> in Buenaventura, bringing technology conversations to a community that is usually excluded from them. <a href="/en/buenaventura/">Read the full case study</a>.
     </p>
 
     <p>
-      I worked as a Project Data Analyst at the <strong>Ministry of ICT Colombia</strong> (2023). That was my first real window into the public sector — into how technology policy is partially shaped from institutions like these, and how much more it could be.
+      I worked as a Project Data Analyst at the <strong>Ministry of ICT Colombia</strong> (2023). That was my first real window into the public sector: into how technology policy is partially shaped from institutions like these, and how much more it could be.
     </p>
 
     <p>
-      In 2022, I interned as a Software Engineer at <strong>Google</strong> in Silicon Valley. It was a transformative experience — I got to see up close both the best and the most unsettling things the future might bring. I also interned at <strong>Rappi</strong> (2021), Colombia's first unicorn, where I got an early sense of what building at scale looks like in Latin America.
+      In 2022, I interned as a Software Engineer at <strong>Google</strong> in Silicon Valley. Seeing that place up close showed me both the best and the most unsettling things the future might bring. I also interned at <strong>Rappi</strong> (2021), Colombia's first unicorn, where I got an early sense of what building at scale looks like in Latin America.
     </p>
 
     <div class="divider my-8" aria-hidden="true"></div>
@@ -121,11 +121,15 @@ const t = useTranslations(locale);
     <h2>Background</h2>
 
     <p>
-      I'm originally from Colombia. I've spent considerable time in Bogotá, Buenaventura, Luang Prabang (Laos), Paris, Lisbon, and San Francisco — and worked across contexts that don't usually talk to each other: academia, startups, government-adjacent industries, and the informal economies that exist alongside all three.
+      I'm originally from Colombia. I've spent considerable time in Bogotá, Buenaventura, Luang Prabang (Laos), Paris, Lisbon, and San Francisco, and worked across contexts that don't usually talk to each other: academia, startups, government-adjacent industries, and the informal economies that exist alongside all three.
     </p>
 
     <p>
-      That background shapes how I think about product: not as an abstract craft, but as something that has to work inside real institutions with real constraints, real politics, and real people who didn't ask for a new tool.
+      That background shapes how I think about product. A product has to work inside real institutions, with real constraints, real politics, and real people who didn't ask for a new tool.
+    </p>
+
+    <p>
+      If any of this overlaps with what you're working on, <a href="https://calendar.app.google/Q7Z4RKaWkfDFBm7v6" target="_blank" rel="noopener noreferrer">book a call</a>.
     </p>
   </article>
 </BaseLayout>
